@@ -14,20 +14,21 @@
   <header class="hero">
     <div class="hero-card">
       <div class="badge">&#127758; IB PYP Tool &nbsp;&middot;&nbsp; Runs in your browser &nbsp;&middot;&nbsp; No data uploaded</div>
-      <h1>Report Card<br>Comment Checker</h1>
-      <p class="subtitle">Upload a PDF or Word file containing report card comments. Get exact sentence-level feedback showing the precise mistake, the exact fix, and an improved sentence — ready to use immediately.</p>
+      <h1>Whole-Class Report<br>Card Checker</h1>
+      <p class="subtitle">Upload a whole-class report card file — PDF or Word — and get a clear feedback table showing the exact sentence, exact error, and exact suggested fix for every comment that needs attention.</p>
     </div>
     <aside class="mini-panel">
       <h2>What it checks</h2>
       <ul class="check-list">
-        <li>&#10003; Grammar errors (a/an, subject-verb, spelling)</li>
+        <li>&#10003; Grammar errors (a/an, subject-verb agreement)</li>
+        <li>&#10003; Spelling &amp; UK/US spelling inconsistency</li>
+        <li>&#10003; Missing space after full stop; extra punctuation</li>
+        <li>&#10003; Sensitive or negative language — rewritten professionally</li>
         <li>&#10003; Wrong student name or pronoun mix-up</li>
-        <li>&#10003; Negative or unprofessional tone</li>
-        <li>&#10003; Missing next step or strength</li>
-        <li>&#10003; IB Learner Profile &amp; ATL language</li>
-        <li>&#10003; EAL parent-friendly wording</li>
-        <li>&#10003; Vague or incomplete sentences</li>
-        <li>&#10003; Level mismatch (optional)</li>
+        <li>&#10003; Duplicated words or repeated transitions</li>
+        <li>&#10003; Wordy sentences (EAL parent–friendly)</li>
+        <li>&#10003; Missing next step</li>
+        <li>&#10003; IB / ATL language for UOI &amp; Student as a Learner</li>
       </ul>
     </aside>
   </header>
@@ -63,31 +64,30 @@
         </div>
 
         <div class="setting-group">
-          <label class="setting-label" for="reportTypeSelect">Comment type</label>
+          <label class="setting-label" for="reportTypeSelect">Comment type override</label>
           <select id="reportTypeSelect" class="setting-select">
-            <option value="auto">Auto-detect from text</option>
-            <option value="sal">Student as a Learner</option>
-            <option value="uoi">Unit of Inquiry</option>
-            <option value="subject">Subject comment</option>
-            <option value="general">General comment</option>
+            <option value="auto">Auto-detect from text (recommended)</option>
+            <option value="sal">All sections: Student as a Learner</option>
+            <option value="uoi">All sections: Unit of Inquiry</option>
+            <option value="subject">All sections: Subject comments</option>
           </select>
-          <div class="setting-desc" style="margin-top:6px">IB/ATL checks only run for Student as a Learner and Unit of Inquiry.</div>
+          <div class="setting-desc" style="margin-top:6px">Auto-detect reads each comment to find Maths, Language, UOI, and SAL sections.</div>
         </div>
 
         <div class="setting-group">
-          <div class="setting-label">Include suggestions for</div>
+          <div class="setting-label">Include checks for</div>
           <div class="checkbox-col">
             <label class="check-label">
               <input type="checkbox" id="chkIB" checked />
-              IB / PYP language (Learner Profile &amp; ATL)
+              IB / PYP language suggestions (UOI &amp; SAL only)
             </label>
             <label class="check-label">
               <input type="checkbox" id="chkEAL" checked />
-              EAL clarity (long sentences, wordy phrases)
+              EAL clarity (long or wordy sentences)
             </label>
             <label class="check-label">
-              <input type="checkbox" id="chkStyle" />
-              Minor style suggestions
+              <input type="checkbox" id="chkTone" checked />
+              Sensitive or negative tone rewrites
             </label>
           </div>
         </div>
@@ -99,7 +99,7 @@
   <!-- UPLOAD CARD -->
   <section class="card upload-card">
     <div class="upload-header">
-      <h2>Upload your report card file</h2>
+      <h2>Upload your whole-class report file</h2>
       <span class="privacy-pill">&#128274; Processed locally — never uploaded</span>
     </div>
 
@@ -112,20 +112,8 @@
       <p class="file-hint">Accepts .pdf and .docx &nbsp;&middot;&nbsp; For .doc files, save as .docx in Word first</p>
     </div>
 
-    <div class="level-row">
-      <label for="levelSelect"><strong>Optional:</strong> Student level</label>
-      <select id="levelSelect">
-        <option value="none">Not selected (skip level check)</option>
-        <option value="emerging">Emerging / High support</option>
-        <option value="developing">Developing</option>
-        <option value="secure">Secure / Meeting expectations</option>
-        <option value="extending">Extending / Exceeding</option>
-      </select>
-      <span class="level-hint">Flags when a comment doesn't match the selected level.</span>
-    </div>
-
     <button class="btn-primary btn-large" id="checkBtn" disabled>
-      &#128270; Check Comments
+      &#128270; Check Report Cards
     </button>
 
     <div class="spinner" id="spinner" hidden>
@@ -138,32 +126,32 @@
   <section class="features">
     <div class="card feature-card">
       <div class="feature-icon">&#128203;</div>
-      <h3>Exact sentence feedback</h3>
-      <p>Shows the full sentence from the report, the exact mistake, the exact fix, and a corrected version — no vague suggestions.</p>
+      <h3>Whole-class checking</h3>
+      <p>Reads a full report document and identifies each student and each report area: Maths, Language, UOI, and Student as a Learner.</p>
+    </div>
+    <div class="card feature-card">
+      <div class="feature-icon">&#9997;&#65039;</div>
+      <h3>Exact sentence fixes</h3>
+      <p>Shows the full sentence from the report, the exact error, and the exact corrected sentence — no vague advice.</p>
     </div>
     <div class="card feature-card">
       <div class="feature-icon">&#127758;</div>
-      <h3>IB language aware</h3>
-      <p>Detects IB Learner Profile attributes and ATL skills in SAL and UOI comments. Suggests richer, IB-aligned wording.</p>
-    </div>
-    <div class="card feature-card">
-      <div class="feature-icon">&#128101;</div>
-      <h3>EAL parent friendly</h3>
-      <p>Flags long or wordy sentences and suggests shorter, clearer versions that are easier for all parents to understand.</p>
+      <h3>UK English standard</h3>
+      <p>Flags American spellings (organize, center, behavior) and suggests the correct UK alternatives.</p>
     </div>
     <div class="card feature-card">
       <div class="feature-icon">&#128274;</div>
       <h3>Private by design</h3>
-      <p>All checking runs in your browser. No student data is ever sent to any server or stored anywhere.</p>
+      <p>Everything runs in your browser. No student data is ever sent to any server or stored anywhere.</p>
     </div>
   </section>
 
   <!-- RESULTS SECTION -->
   <section id="resultsSection" hidden>
     <div class="results-header">
-      <h2>Results</h2>
+      <h2>Feedback</h2>
       <div class="download-row">
-        <button class="btn-primary" id="downloadPdfBtn" hidden>&#11015; Download PDF</button>
+        <button class="btn-primary" id="downloadPdfBtn" hidden>&#11015; Download PDF Feedback</button>
         <button class="btn-outline" id="downloadHtmlBtn" hidden>&#11015; HTML</button>
         <button class="btn-outline" id="downloadCsvBtn" hidden>&#11015; CSV</button>
       </div>
@@ -175,16 +163,11 @@
       <table id="resultsTable">
         <thead>
           <tr>
-            <th>Student / Section</th>
-            <th>Report Area</th>
-            <th>Priority</th>
-            <th>Issue Type</th>
-            <th>Exact Sentence From Report</th>
-            <th>Exact Mistake</th>
-            <th>Why It Matters</th>
-            <th>Exact Fix</th>
-            <th>Improved Sentence</th>
-            <th>IB / ATL Link</th>
+            <th style="min-width:100px">Student Name</th>
+            <th style="min-width:110px">Report Area</th>
+            <th style="min-width:75px">Priority</th>
+            <th>Exact Error</th>
+            <th>Suggested Fix</th>
           </tr>
         </thead>
         <tbody id="tableBody"></tbody>
