@@ -460,8 +460,10 @@ tbody tr:last-child td { border-bottom: none; }
   white-space: nowrap;
 }
 
-.found-cell { font-style: italic; color: #374151; }
-.found-cell em { color: var(--muted); }
+.exact-sentence { font-style: italic; color: #374151; max-width: 200px; }
+.exact-mistake  { color: var(--red); font-weight: 600; }
+.improved-cell  { color: var(--green); }
+.ib-cell        { color: var(--blue); font-size: 12px; }
 
 .results-note {
   margin-top: 14px;

@@ -15,20 +15,19 @@
     <div class="hero-card">
       <div class="badge">&#127758; IB PYP Tool &nbsp;&middot;&nbsp; Runs in your browser &nbsp;&middot;&nbsp; No data uploaded</div>
       <h1>Report Card<br>Comment Checker</h1>
-      <p class="subtitle">Upload a PDF or Word file containing report card comments. Get a clear feedback table showing what to fix, why, and how — instantly, privately, in your browser.</p>
+      <p class="subtitle">Upload a PDF or Word file containing report card comments. Get exact sentence-level feedback showing the precise mistake, the exact fix, and an improved sentence — ready to use immediately.</p>
     </div>
     <aside class="mini-panel">
       <h2>What it checks</h2>
       <ul class="check-list">
-        <li>&#10003; Grammar, spelling &amp; punctuation</li>
+        <li>&#10003; Grammar errors (a/an, subject-verb, spelling)</li>
         <li>&#10003; Wrong student name or pronoun mix-up</li>
-        <li>&#10003; Negative or informal tone</li>
-        <li>&#10003; Missing next step or target</li>
+        <li>&#10003; Negative or unprofessional tone</li>
+        <li>&#10003; Missing next step or strength</li>
         <li>&#10003; IB Learner Profile &amp; ATL language</li>
-        <li>&#10003; EAL parent–friendly wording</li>
-        <li>&#10003; Vague language &amp; clichés</li>
+        <li>&#10003; EAL parent-friendly wording</li>
+        <li>&#10003; Vague or incomplete sentences</li>
         <li>&#10003; Level mismatch (optional)</li>
-        <li>&#10003; Report area auto-detection</li>
       </ul>
     </aside>
   </header>
@@ -58,7 +57,7 @@
             <label class="radio-label">
               <input type="radio" name="strictness" value="detailed" />
               <span>Detailed</span>
-              <span class="setting-desc">Show all suggestions including minor style</span>
+              <span class="setting-desc">All suggestions including minor style</span>
             </label>
           </div>
         </div>
@@ -69,12 +68,10 @@
             <option value="auto">Auto-detect from text</option>
             <option value="sal">Student as a Learner</option>
             <option value="uoi">Unit of Inquiry</option>
-            <option value="subject">Subject comment (Maths, Language, etc.)</option>
+            <option value="subject">Subject comment</option>
             <option value="general">General comment</option>
           </select>
-          <div class="setting-desc" style="margin-top:6px">
-            Auto-detect reads keywords in each comment to classify it.
-          </div>
+          <div class="setting-desc" style="margin-top:6px">IB/ATL checks only run for Student as a Learner and Unit of Inquiry.</div>
         </div>
 
         <div class="setting-group">
@@ -82,21 +79,21 @@
           <div class="checkbox-col">
             <label class="check-label">
               <input type="checkbox" id="chkIB" checked />
-              IB / PYP language (Learner Profile &amp; ATL skills)
+              IB / PYP language (Learner Profile &amp; ATL)
             </label>
             <label class="check-label">
               <input type="checkbox" id="chkEAL" checked />
-              EAL clarity (long sentences, idioms, vague phrases)
+              EAL clarity (long sentences, wordy phrases)
             </label>
             <label class="check-label">
               <input type="checkbox" id="chkStyle" />
-              Minor style (wordiness, sentence variety)
+              Minor style suggestions
             </label>
           </div>
         </div>
 
-      </div><!-- settings-grid -->
-    </div><!-- settings-body -->
+      </div>
+    </div>
   </section>
 
   <!-- UPLOAD CARD -->
@@ -116,7 +113,7 @@
     </div>
 
     <div class="level-row">
-      <label for="levelSelect"><strong>Optional:</strong> Student level in this file</label>
+      <label for="levelSelect"><strong>Optional:</strong> Student level</label>
       <select id="levelSelect">
         <option value="none">Not selected (skip level check)</option>
         <option value="emerging">Emerging / High support</option>
@@ -124,7 +121,7 @@
         <option value="secure">Secure / Meeting expectations</option>
         <option value="extending">Extending / Exceeding</option>
       </select>
-      <span class="level-hint">If set, comments that don't match this level will be flagged.</span>
+      <span class="level-hint">Flags when a comment doesn't match the selected level.</span>
     </div>
 
     <button class="btn-primary btn-large" id="checkBtn" disabled>
@@ -140,24 +137,24 @@
   <!-- FEATURES ROW -->
   <section class="features">
     <div class="card feature-card">
-      <div class="feature-icon">&#128195;</div>
-      <h3>Report Area column</h3>
-      <p>Auto-detects whether each comment is for UOI, Student as Learner, Maths, Language, or General — IB checks only run where relevant.</p>
+      <div class="feature-icon">&#128203;</div>
+      <h3>Exact sentence feedback</h3>
+      <p>Shows the full sentence from the report, the exact mistake, the exact fix, and a corrected version — no vague suggestions.</p>
     </div>
     <div class="card feature-card">
       <div class="feature-icon">&#127758;</div>
       <h3>IB language aware</h3>
-      <p>Checks for Learner Profile attributes (Inquirer, Reflective…) and ATL skills in UOI and SAL comments only.</p>
+      <p>Detects IB Learner Profile attributes and ATL skills in SAL and UOI comments. Suggests richer, IB-aligned wording.</p>
     </div>
     <div class="card feature-card">
       <div class="feature-icon">&#128101;</div>
       <h3>EAL parent friendly</h3>
-      <p>Flags long sentences, stacked clauses, idioms and vague phrases that may be confusing for parents.</p>
+      <p>Flags long or wordy sentences and suggests shorter, clearer versions that are easier for all parents to understand.</p>
     </div>
     <div class="card feature-card">
       <div class="feature-icon">&#128274;</div>
       <h3>Private by design</h3>
-      <p>All checking happens in your browser. No student data is ever sent to any server.</p>
+      <p>All checking runs in your browser. No student data is ever sent to any server or stored anywhere.</p>
     </div>
   </section>
 
@@ -166,8 +163,9 @@
     <div class="results-header">
       <h2>Results</h2>
       <div class="download-row">
-        <button class="btn-outline" id="downloadHtmlBtn" hidden>&#11015; Download (.html)</button>
-        <button class="btn-outline" id="downloadCsvBtn" hidden>&#11015; Download (.csv)</button>
+        <button class="btn-primary" id="downloadPdfBtn" hidden>&#11015; Download PDF</button>
+        <button class="btn-outline" id="downloadHtmlBtn" hidden>&#11015; HTML</button>
+        <button class="btn-outline" id="downloadCsvBtn" hidden>&#11015; CSV</button>
       </div>
     </div>
 
@@ -180,17 +178,20 @@
             <th>Student / Section</th>
             <th>Report Area</th>
             <th>Priority</th>
-            <th>Category</th>
-            <th>Text Found</th>
+            <th>Issue Type</th>
+            <th>Exact Sentence From Report</th>
+            <th>Exact Mistake</th>
             <th>Why It Matters</th>
-            <th>Suggested Fix</th>
+            <th>Exact Fix</th>
+            <th>Improved Sentence</th>
+            <th>IB / ATL Link</th>
           </tr>
         </thead>
         <tbody id="tableBody"></tbody>
       </table>
     </div>
 
-    <p class="results-note">&#9888;&#65039; Automated first-pass only. Always apply your professional judgement before making changes.</p>
+    <p class="results-note">&#9888;&#65039; This tool gives high-confidence suggestions only. Please complete a final teacher read-through before submitting reports.</p>
   </section>
 
 </div><!-- .page -->
@@ -198,6 +199,8 @@
 <!-- CDN LIBRARIES -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
 <script>
   if (typeof pdfjsLib !== 'undefined') {
     pdfjsLib.GlobalWorkerOptions.workerSrc =
